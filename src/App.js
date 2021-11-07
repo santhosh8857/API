@@ -1,6 +1,6 @@
 import "./App.css";
 import { React, useEffect, useState } from "react";
-
+import axios from "axios";
 const url = "https://jsonplaceholder.typicode.com/todos";
 function App() {
   // using state to re-render the components once the API call happened
@@ -29,7 +29,11 @@ function App() {
 
   useEffect(() => {
     // calling API service
-    getData();
+    // getData();
+    axios
+      .get(url)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   }, [count]);
   // Added comments
   // at first the component doesn't have the value hence it will return undefined;
